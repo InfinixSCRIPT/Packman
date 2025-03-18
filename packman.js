@@ -1,16 +1,16 @@
-// Basit bir örnek Pac-Man oyunu mantığı (oyunun tam kodları burada yer alacak)
+// Pac-Man oyun kodları burada yer alacak
 console.log("Pac-Man oyunu başlıyor...");
 
 // Oyuncu ölünce yapılacak işlemler
 function gameOver() {
-    // Oyuncu öldüğinde ekrana mesaj yaz
+    // Oyuncu öldüğünde ekrana mesaj yaz
     document.getElementById('message').innerText = "You win 100 Bobax!";
 
     // 5 saniye sonra jumpscare görüntüsünü aç
     setTimeout(function() {
-        // Burada jumpscare görselini göstereceğiz (görseli yüklemelisin)
+        // Burada jumpscare görselini göstereceğiz
         var jumpscareImage = document.createElement("img");
-        jumpscareImage.src = "jumpscare.png"; // jumpscare görselinin yolu
+        jumpscareImage.src = "jumpscare.png";  // jumpscare görselinin yolu
         jumpscareImage.style.position = "absolute";
         jumpscareImage.style.top = "0";
         jumpscareImage.style.left = "0";
@@ -20,10 +20,10 @@ function gameOver() {
 
         // Sekmeyi 1 saniye sonra kapat
         setTimeout(function() {
-            window.close(); // Sekmeyi kapat
+            window.close();  // Sekmeyi kapat
         }, 1000);
-    }, 5000); // 5 saniye sonra jumpscare
+    }, 5000);  // 5 saniye sonra jumpscare
 }
 
-// Bu fonksiyonu örnek olarak hemen tetikleyelim (oyunun sonunda tetiklenmeli)
-setTimeout(gameOver, 3000);  // Oyunun sonunda bu fonksiyonu çağırıyoruz
+// Oyunun sonunda gameOver fonksiyonunu çağıracağız
+setTimeout(gameOver, 3000);  // 3 saniye sonra gameOver fonksiyonunu tetikle
