@@ -1,65 +1,57 @@
-// Pac-Man oyunu simülasyonu başlıyor...
-console.log("Pac-Man oyunu başlıyor...");
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packman Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
 
-// Oyuncu ölünce yapılacak işlemler
-function gameOver() {
-    // Oyuncu öldüğünde ekrana mesaj yaz
-    document.getElementById('message').innerText = "You win 100 Bobax!";
+        #message {
+            font-size: 24px;
+        }
 
-    // 3 saniye sonra Windows XP tarzında hata mesajlarını göster
-    setTimeout(function() {
-        simulateErrors();
-    }, 3000);  // 3 saniye sonra hataları simüle et
-}
+        #errorScreen {
+            display: none;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+        }
 
-// Windows XP tarzında hata mesajları simülasyonu
-function simulateErrors() {
-    let errors = [
-        "Error: Program has stopped working.",
-        "Error: System failure.",
-        "Error: Memory access violation.",
-        "Error: Application not responding.",
-        "Error: Blue Screen of Death encountered."
-    ];
+        #gameScreen {
+            display: none;
+        }
 
-    errors.forEach((error, index) => {
-        setTimeout(function() {
-            let errorMessage = document.createElement("div");
-            errorMessage.innerText = error;
-            errorMessage.style.color = "red";
-            errorMessage.style.fontSize = "20px";
-            errorMessage.style.fontFamily = "monospace";
-            document.body.appendChild(errorMessage);
-        }, index * 1000);  // Her hata mesajı arasında 1 saniye bekle
-    });
+        #jumpScream {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Press "Q" to Start Game</div>
+    <div id="errorScreen">
+        <h1>ERROR</h1>
+        <p>System Failure...</p>
+        <p>Windows XP is not responding...</p>
+        <p>Please restart your computer.</p>
+    </div>
+    <div id="gameScreen">
+        <h1>Game Started!</h1>
+        <p>Packman Game is starting...</p>
+    </div>
+    <img id="jumpScream" src="jumpscare.jpg" alt="Jumpscare" width="300" height="300">
+    <audio id="screamAudio" src="scream.mp3"></audio>
 
-    // 5 saniye sonra jumpscare görüntüsünü ekle
-    setTimeout(function() {
-        showJumpscare();
-    }, 5000);  // 5 saniye sonra jumpscare
-}
-
-// Jumpscare'ı ve sesini göster
-function showJumpscare() {
-    // Jumpscare görselini ekle
-    var jumpscareImage = document.createElement("img");
-    jumpscareImage.src = "jumpscare.jpg";  // jumpscare görselinin yolu
-    jumpscareImage.style.position = "absolute";
-    jumpscareImage.style.top = "0";
-    jumpscareImage.style.left = "0";
-    jumpscareImage.style.width = "100%";
-    jumpscareImage.style.height = "100%";
-    document.body.appendChild(jumpscareImage);
-
-    // Bağırma sesini çal
-    var screamAudio = new Audio("scream.mp3");  // scream.mp3 ses dosyasını yükle
-    screamAudio.play();
-
-    // 1 saniye sonra sekmeyi kapat
-    setTimeout(function() {
-        window.close();  // Sekmeyi kapat
-    }, 1000);
-}
-
-// Oyunun sonunda gameOver fonksiyonunu çağıracağız
-setTimeout(gameOver, 3000);  // 3 saniye sonra gameOver fonksiyonunu tetikle
+    <script src="packman.js"></script>
+</body>
+</html>
