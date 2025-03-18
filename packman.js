@@ -1,6 +1,29 @@
-// packman.js dosyasında temel oyun mekanizması, animasyonlar vb. olacak.
-// Örneğin, buraya Pac-Man'in hareket etmesini sağlayacak kodları yazabilirsin.
-
-// Basit bir örnek (sadece bir uyarı veriyoruz):
+// Basit bir örnek Pac-Man oyunu mantığı (oyunun tam kodları burada yer alacak)
 console.log("Pac-Man oyunu başlıyor...");
-alert("Pac-Man oyunu başlıyor!");  // Oyunun başladığını belirten bir uyarı
+
+// Oyuncu ölünce yapılacak işlemler
+function gameOver() {
+    // Oyuncu öldüğinde ekrana mesaj yaz
+    document.getElementById('message').innerText = "You win 100 Bobax!";
+
+    // 5 saniye sonra jumpscare görüntüsünü aç
+    setTimeout(function() {
+        // Burada jumpscare görselini göstereceğiz (görseli yüklemelisin)
+        var jumpscareImage = document.createElement("img");
+        jumpscareImage.src = "jumpscare.png"; // jumpscare görselinin yolu
+        jumpscareImage.style.position = "absolute";
+        jumpscareImage.style.top = "0";
+        jumpscareImage.style.left = "0";
+        jumpscareImage.style.width = "100%";
+        jumpscareImage.style.height = "100%";
+        document.body.appendChild(jumpscareImage);
+
+        // Sekmeyi 1 saniye sonra kapat
+        setTimeout(function() {
+            window.close(); // Sekmeyi kapat
+        }, 1000);
+    }, 5000); // 5 saniye sonra jumpscare
+}
+
+// Bu fonksiyonu örnek olarak hemen tetikleyelim (oyunun sonunda tetiklenmeli)
+setTimeout(gameOver, 3000);  // Oyunun sonunda bu fonksiyonu çağırıyoruz
