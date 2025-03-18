@@ -1,57 +1,35 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packman Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'q' || event.key === 'Q') {
+        // Kullanıcı Q'ya basınca oyun başlatılır
+        startGame();
+    }
+});
 
-        #message {
-            font-size: 24px;
-        }
+function startGame() {
+    // "Press Q to Start Game" mesajını kaldır
+    document.getElementById('message').style.display = 'none';
 
-        #errorScreen {
-            display: none;
-            background-color: black;
-            color: white;
-            padding: 20px;
-            font-size: 18px;
-        }
+    // Hata ekranını göster
+    var errorScreen = document.getElementById('errorScreen');
+    errorScreen.style.display = 'block';
 
-        #gameScreen {
-            display: none;
-        }
+    // Hata ekranında birkaç saniye bekle ve ardından hata simülasyonu ile "Windows XP" hataları göster
+    setTimeout(function () {
+        errorScreen.innerHTML = `
+            <h1>ERROR</h1>
+            <p>System Failure...</p>
+            <p>Windows XP is not responding...</p>
+            <p>Please restart your computer.</p>
+        `;
+    }, 1000);
 
-        #jumpScream {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-        }
-    </style>
-</head>
-<body>
-    <div id="message">Press "Q" to Start Game</div>
-    <div id="errorScreen">
-        <h1>ERROR</h1>
-        <p>System Failure...</p>
-        <p>Windows XP is not responding...</p>
-        <p>Please restart your computer.</p>
-    </div>
-    <div id="gameScreen">
-        <h1>Game Started!</h1>
-        <p>Packman Game is starting...</p>
-    </div>
-    <img id="jumpScream" src="jumpscare.jpg" alt="Jumpscare" width="300" height="300">
-    <audio id="screamAudio" src="scream.mp3"></audio>
+    // Hata ekranı tamamlandıktan sonra ses çalmaya başla ve jumpscare görselini göster
+    setTimeout(function () {
+        var screamAudio = document.getElementById('screamAudio');
+        screamAudio.play();  // Sesi çal
 
-    <script src="packman.js"></script>
-</body>
-</html>
+        // Jumpscare görselini göster
+        var jumpScreamImage = document.getElementById('jumpScream');
+        jumpScreamImage.style.display = 'block';
+    }, 3000);  // 3 saniye sonra jumpscare göster
+}
