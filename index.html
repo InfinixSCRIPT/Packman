@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pac-Man Redirect</title>
+    <title>Redirecting...</title>
     <script>
-        window.onload = function() {
-            window.open("packman.html", "_blank"); // Yeni sekmede aç
-        }
+        setTimeout(function() {
+            // packman.html sayfasına yönlendirme
+            window.location.href = "Packman/packman.html"; // "Packman" klasörüne dikkat et
+        }, 1000); // 1 saniye sonra yönlendir
     </script>
 </head>
 <body>
-    <h1>Pac-Man Oyununa Yönlendiriliyorsunuz...</h1>
+    <h1>Pac-Man Yükleniyor...</h1>
 </body>
 </html>
